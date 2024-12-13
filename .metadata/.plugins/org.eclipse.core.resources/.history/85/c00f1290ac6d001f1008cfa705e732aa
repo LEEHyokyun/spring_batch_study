@@ -1,0 +1,63 @@
+//package com.kakao.customer.batch.job;
+//
+//import org.springframework.batch.core.Job;
+//import org.springframework.batch.core.JobExecution;
+//import org.springframework.batch.core.JobExecutionListener;
+//import org.springframework.batch.core.Step;
+//import org.springframework.batch.core.configuration.JobRegistry;
+//import org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor;
+//import org.springframework.batch.core.job.builder.JobBuilder;
+//import org.springframework.batch.core.launch.JobLauncher;
+//import org.springframework.batch.core.repository.JobRepository;
+//import org.springframework.batch.core.scope.context.ChunkContext;
+//import org.springframework.batch.core.step.builder.StepBuilder;
+//import org.springframework.batch.core.step.tasklet.Tasklet;
+//import org.springframework.batch.repeat.RepeatStatus;
+//import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+//import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.transaction.PlatformTransactionManager;
+//
+//import lombok.RequiredArgsConstructor;
+//import lombok.extern.slf4j.Slf4j;
+//
+//@Slf4j // log 사용을 위한 lombok 어노테이션
+//@RequiredArgsConstructor // 생성자 DI를 위한 lombok 어노테이션
+//@Configuration
+//public class MyFirstJobConfiguration {
+//	
+//	@Bean(name = "testJob")
+//    public Job testJob(
+//            JobRepository jobRepository,
+//            Step testStep
+//    ) {
+//        return new JobBuilder("testJob", jobRepository)
+//                .start(testStep)
+//                .build();
+//    }
+//	
+//	@Bean
+//    public Step testStep(
+//            JobRepository jobRepository,
+//            PlatformTransactionManager platformTransactionManager
+//    ) {
+//        return new StepBuilder("testStep", jobRepository)
+//                .tasklet(
+//                        (contribution, chunkContext) -> {
+//                            System.out.println("Hello World!");
+//                            return RepeatStatus.FINISHED;
+//                        },
+//                        platformTransactionManager
+//                )
+//                .build();
+//    }
+////	
+////	@Bean
+////    public JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor(JobRegistry jobRegistry) {
+////        JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor = new JobRegistryBeanPostProcessor();
+////        jobRegistryBeanPostProcessor.setJobRegistry(jobRegistry);
+////        return jobRegistryBeanPostProcessor;
+////    }
+//}
+

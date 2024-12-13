@@ -1,0 +1,14 @@
+package com.kakao.project.file.mapper;
+
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.kakao.project.customer.dto.CustomerFilteringDTO;
+
+@Mapper
+public interface FileFindingMapper{
+	
+	//요주의 인물 내역을 조회합니다(고객 실명번호를 반환합니다).
+	Map<String, Object> selectCustomerFilteringList(CustomerFilteringDTO req);
+}

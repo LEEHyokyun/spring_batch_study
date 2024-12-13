@@ -1,0 +1,15 @@
+package com.kakao.project;
+
+import org.junit.jupiter.api.Test;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@MybatisTest
+@SpringBootTest
+class ProjectApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

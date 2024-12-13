@@ -1,0 +1,60 @@
+package com.kakao.project.customer.batch;
+
+import org.springframework.batch.core.Step;
+import org.springframework.batch.core.StepContribution;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.scope.context.ChunkContext;
+import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
+import org.springframework.context.annotation.Bean;
+
+/*
+ * 배치 클래스는 도메인 + 명사 + 명사에 행해지는 행위(동사) + DTO명으로 구성하여
+ * 배치 클래스의 목적을 쉽게 알 수 있도록 설정합니다.
+ * */
+public class CustomerFilteringBatch extends AbstractCustomerFilteringBatch{
+	
+	/*
+	 * 배치의 작업방식 중 순차적, 단일 트랜잭션 수행 방식인 Tasklet은 적합하지 않음으로 판단하여,
+	 * 대용량 데이터 처리 및 중복 데이터 발생 시 
+	 * */
+	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+        System.out.println("배치가 실행되었습니다!");
+        return RepeatStatus.FINISHED;
+    }
+	
+	@Bean(name = "customerWatchListFilteringJob")
+  public Job customerWatchListFilteringJob(JobRepository jobRepository, Step testStep) {
+       Job job = new JobBuilder("customerWatchListFilteringJob", jobRepository)
+              .start(testStep)
+              .build();
+       
+       return job;
+  }
+	
+	@Bean
+  public Step testStep(
+          JobRepository jobRepository,
+          PlatformTransactionManager platformTransactionManager
+  ) {
+      return new StepBuilder("testStep", jobRepository)
+              .tasklet(
+                      (contribution, chunkContext) -> {
+                          System.out.println("Hello World!");
+                          return RepeatStatus.FINISHED;
+                      },
+                      platformTransactionManager
+              )
+              .build();
+  }
+//	
+//	@Bean
+//  public JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor(JobRegistry jobRegistry) {
+//      JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor = new JobRegistryBeanPostProcessor();
+//      jobRegistryBeanPostProcessor.setJobRegistry(jobRegistry);
+//      return jobRegistryBeanPostProcessor;
+//  }
+}
+
+

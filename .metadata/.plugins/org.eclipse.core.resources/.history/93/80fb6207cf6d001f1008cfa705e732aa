@@ -1,0 +1,21 @@
+package com.kakao.project.rule.constants;
+
+import java.util.Arrays;
+
+/*
+ * Rule에 대한 상수 문자열 입니다.
+ * 규제 변동이 수시로 일어나지 않고 구조체보다는 직관적인 문자열 상수로 관리하는게 용이하다 생각하여 구성하였습니다.
+ * */
+public class RuleConstants {
+	
+	//파일 디렉토리(NAS)는 변동성이 매우 적으므로 일반 상수 처리
+	public static String FILE_DIRECTORY = "c:/rcv/";
+	
+	//txt 파일의 구분자는 전문규격으로 설정하여 관리하여 변동성이 매우 적으므로 일반 상수 처리
+	public static String FILE_TXT_SEPERATOR = "\\|\\|\\|";
+	
+	//확장자가 신규 유형일 경우 메시지 상수 처리
+	public static String FILE_NEW_TYPE_MESSAGE = "새로운 유형의 파일 확장자입니다. 별도 로직 구성이 필요합니다.";
+	
+
+}

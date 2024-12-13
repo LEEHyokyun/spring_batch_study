@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--거래자 관련 조회 로직은 xml파일에서 일괄적으로 관리-->
+<mapper namespace="com.kakao.project.customer.mapper.FileFindingMapper">
+    <select id="selectFileFindingList" parameterType="com.kakao.project.file.dto.FileFindingMapper" resultType="map">
+        /*[selectFileFindingList] 외부 기관에서 전달받은 전문 내역을 조회하여 파일 파싱 여부 혹은 파싱 파일 명 내역을 반환*/
+        SELECT A.파일_명
+FROM 거래자_전문_내역 A
+WHERE 1=1
+AND A.등록_일시 >= SYSDATE - 10/(24*60)
+    </select>
+</mapper>

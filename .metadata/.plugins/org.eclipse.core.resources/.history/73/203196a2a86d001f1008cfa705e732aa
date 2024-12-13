@@ -1,0 +1,31 @@
+package com.kakao.project.customer.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+
+import com.kakao.project.customer.dto.CustomerFilteringDTO;
+import com.kakao.project.customer.mapper.CustomerFilteringMapper;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class CustomerFilteringService extends AbstractCustomerFilteringService{
+	
+	@Autowired
+	private CustomerFilteringMapper customerFilteringMapper;
+	
+	@Transactional(readOnly = true)
+	public List<Map<String, Object>> selectCustomerFilteringList(List<CustomerFilteringDTO> body){
+		
+		List<Map<String, Object>> list = customerFilteringMapper.selectCustomerFilteringList(body);
+		
+		return customerFilteringMapper.selectCustomerFilteringList(body);
+	}
+}

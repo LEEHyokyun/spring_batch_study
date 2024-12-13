@@ -1,0 +1,57 @@
+1725775588827	Delete element
+1725777339117	Delete element
+1725780809875	Copy packages
+1725780817400	Copy compilation unit
+1725780945225	Copy compilation unit
+1725780974497	Copy compilation unit
+1725781007760	Delete element
+1725781011178	Copy compilation unit
+1725781021022	Delete element
+1725781042541	Copy compilation unit
+1725781093032	Delete element
+1725781095564	Copy compilation unit
+1725781100095	Delete element
+1725781186367	Rename type 'AbstractCustomerDTO'
+1725781258590	Rename type 'AbstractCustomerFilteringController'
+1725781271313	Rename type 'CustomerFilteringController'
+1725781320454	Rename type 'CustomerFilteringDTO'
+1725781360070	Rename compilation unit 'FileController.java'
+1725781369178	Rename type 'FileDTO'
+1725781470921	Rename type 'CustomerFilteringMapper'
+1725781539727	Rename type 'CustomerFilteringService'
+1725781564485	Rename type 'AbstractCustomerFilteringService'
+1725781712762	Copy file
+1725781721076	Rename resource 'CustomerFilteringMapper.xml'
+1725790445569	Delete element
+1725790479779	Copy compilation units
+1725790489523	Copy compilation unit
+1725790538212	Rename type 'AbstractCustomerFilteringController'
+1725790646736	Rename type 'CustomerFilteringController'
+1725790653182	Rename type 'AbstractRuleController'
+1725790804996	Copy package
+1725790827353	Copy package
+1725790831866	Delete elements
+1725790881616	Copy package
+1725791109146	Copy packages
+1725791141055	Rename type 'AbstractCustomerFilteringController'
+1725791153906	Rename type 'CustomerFilteringController'
+1725791707427	Rename type 'AbstractCustomerDTO'
+1725791747876	Rename type 'CustomerFilteringMapper'
+1725791777894	Rename type 'CustomerFilteringDTO'
+1725791885226	Copy compilation unit
+1725791891044	Rename type 'CommonFileConstants'
+1725792529826	Rename type 'AbstractCustomerFilteringService'
+1725792554791	Rename type 'CustomerFilteringService'
+1725792561047	Rename type 'RuleService'
+1725793264357	Copy compilation unit
+1725793267887	Delete element
+1725793269439	Copy file
+1725793276272	Rename resource 'FileFindingMapper.xml'
+1725793565404	Delete element
+1725793634901	Copy compilation units
+1725793640443	Rename type 'AbstractRuleService'
+1725793656204	Rename type 'RuleCustomerService'
+1725793686616	Delete element
+1725793701859	Copy compilation units
+1725793707281	Rename type 'AbstractRuleDTO'
+1725793716950	Rename type 'RuleCustomerDTO'

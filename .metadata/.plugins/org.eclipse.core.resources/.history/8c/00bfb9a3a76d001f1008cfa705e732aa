@@ -1,0 +1,27 @@
+package com.kakao.project.customer.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.kakao.project.customer.dto.CustomerFilteringDTO;
+import com.kakao.project.customer.service.CustomerFilteringService;
+
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
+@RestController
+@RequestMapping("/cus")
+public class CustomerFilteringController extends AbstractCustomerFilteringController{
+	
+	private CustomerFilteringService customerFilteringService;
+	
+	@PostMapping("/hello")
+	public List<Map<String, Object>> selectCustomerFilteringList(@RequestBody CustomerFilteringDTO req) {
+		System.out.print("요청확인");
+		return customerFilteringService.selectCustomerFilteringList(req);
+	}
+}

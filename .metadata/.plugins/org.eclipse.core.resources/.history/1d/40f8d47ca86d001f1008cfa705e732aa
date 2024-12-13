@@ -1,0 +1,10 @@
+package com.kakao.project.customer.dba;
+
+/*
+ * 거래자 dba
+ * */
+
+/*
+ * 거래자 도메인에 대한 dba 영역입니다.
+ * 조회 쿼리 등 데이터베이스와 직접적으로 관련된 xml 파일이 관리됩니다.
+ * */

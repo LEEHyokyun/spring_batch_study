@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--거래자 관련 조회 로직은 xml파일에서 일괄적으로 관리-->
+<mapper namespace="com.kakao.project.customer.mapper.FileFindingMapper">
+    <select id="selectFileFindingList" parameterType="com.kakao.project.file.dto.FileFindingMapper" resultType="map">
+        /*[selectFileFindingList] 외부 기관에서 전달받은 전문 내역을 조회하여 파일 파싱 여부 혹은 파싱 파일 명 내역을 반환*/
+        WITH T1 AS 
+		(
+			SELECT A.거래자_등록번호
+			      ,A.거래자_영문명 
+			      ,A.거래자_생년월일
+			      ,B.거래자_실명번호
+			FROM 거래자 A
+			INNER JOIN 거래자_번호_정보 B
+			  ON A.거래자_등록번호 = B.거래자_등록번호
+			WHERE 1=1
+			  AND (B.거래자_등록번호, B.관리_일련번호)
+			  IN    (
+			 		  SELECT C.거래자_등록번호, MAX(C.관리_일련번호)
+			 		  FROM 거래자_번호_정보 C
+			 		  GROUP BY C.거래자_등록번호
+			        )
+			  AND  A.거래자_영문명  = UPPER(#{customerEngName})
+			  AND  A.거래자_생년월일 = #{customerBirthDay}
+			      
+		)
+		,T2 AS 
+		(
+			SELECT A.거래자_등록번호
+			      ,A.거래자_영문명 
+			      ,A.거래자_생년월일
+			      ,B.거래자_국적
+			FROM 거래자 A
+			INNER JOIN 거래자_국적_정보 B
+			  ON A.거래자_등록번호 = B.거래자_등록번호
+			WHERE 1=1 
+			  AND (B.거래자_등록번호, B.관리_일련번호)
+			  IN      (
+			 		  SELECT C.거래자_등록번호, MAX(C.관리_일련번호)
+			 		  FROM 거래자_국적_정보 C
+			 		  GROUP BY C.거래자_등록번호
+			        )
+			  AND  A.거래자_영문명  = UPPER(#{customerEngName})
+			  AND  A.거래자_생년월일 = #{customerBirthDay}
+			  AND  B.거래자_국적    = #{customerNation}  
+		)
+		SELECT T1.거래자_등록번호
+		      ,T1.거래자_영문명
+		      ,T1.거래자_생년월일
+		      ,T1.거래자_실명번호
+		      ,T2.거래자_국적
+		FROM T1,T2
+		WHERE T1.거래자_등록번호 = T2.거래자_등록번호
+    </select>
+</mapper>
